@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import './model/financial_transaction.dart';
+import 'package:intl/intl.dart';
 
 class FinancialTransactionsWidget extends StatefulWidget {
   const FinancialTransactionsWidget({super.key});
@@ -42,7 +43,7 @@ class _FinancialTransactionsWidgetState
                       fontSize: 18, fontWeight: FontWeight.bold),
                 ),
                 Text(
-                  "${transaction.date.toLocal().day}/${transaction.date.toLocal().month}/${transaction.date.toLocal().year} às ${transaction.date.toLocal().hour}:${transaction.date.toLocal().minute}",
+                  DateFormat().format(transaction.date),
                   style: const TextStyle(
                       fontSize: 14,
                       fontWeight: FontWeight.bold,

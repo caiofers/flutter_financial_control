@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_financial_control/financial_transactions_widget.dart';
+import 'package:flutter_financial_control/transaction_register_widget.dart';
 
 void main() {
   runApp(const FinancialControlApp());
@@ -27,10 +28,9 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(title: const Text("Controle Financeiro")),
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: const [
-          Text("Cadastro de gastos"),
+          TransactionRegisterWidget(),
           FinancialTransactionsWidget()
         ],
       ),
