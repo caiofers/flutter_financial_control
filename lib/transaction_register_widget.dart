@@ -24,6 +24,10 @@ class TransactionRegisterWidget extends StatelessWidget {
               controller: transactionValue,
               decoration: const InputDecoration(labelText: "Valor"),
               keyboardType: TextInputType.number,
+              onSubmitted: ((value) {
+                addTransaction(transactionDescription.text,
+                    double.parse(transactionValue.text));
+              }),
             )),
         Padding(
             padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 10),

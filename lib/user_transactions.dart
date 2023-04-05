@@ -13,7 +13,7 @@ class UserTransactionsWidget extends StatefulWidget {
 class _UserTransactionsWidgetState extends State<UserTransactionsWidget> {
   List<FinancialTransaction> transactions = [];
 
-  void addTransactions(String description, double value) {
+  void addTransaction(String description, double value) {
     final newTransaction = FinancialTransaction(
         DateTime.now().toString(), description, value, DateTime.now());
 
@@ -22,13 +22,19 @@ class _UserTransactionsWidgetState extends State<UserTransactionsWidget> {
     });
   }
 
+  void deleteTransaction(String id) {
+    setState(() {
+      transactions.removeWhere(((element) => element.id == id));
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        TransactionRegisterWidget(addTransactions),
-        FinancialTransactionsWidget(transactions)
+        TransactionRegisterWidget(addTransaction),
+        FinancialTransactionsWidget(transactions, deleteTransaction)
       ],
     );
   }
