@@ -1,26 +1,38 @@
 import 'package:flutter/material.dart';
 
 class TransactionRegisterWidget extends StatelessWidget {
-  const TransactionRegisterWidget({super.key});
+  TransactionRegisterWidget(this.addTransaction, {super.key});
+
+  Function addTransaction;
+
+  TextEditingController transactionDescription = TextEditingController();
+  TextEditingController transactionValue = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return Card(
       child: Column(children: [
         Padding(
+            padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
             child: TextField(
-              decoration: InputDecoration(labelText: "Descrição"),
-            ),
-            padding: EdgeInsets.symmetric(vertical: 5, horizontal: 10)),
+              controller: transactionDescription,
+              decoration: const InputDecoration(labelText: "Descrição"),
+            )),
         Padding(
+            padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
             child: TextField(
-              decoration: InputDecoration(labelText: "Valor"),
+              controller: transactionValue,
+              decoration: const InputDecoration(labelText: "Valor"),
               keyboardType: TextInputType.number,
-            ),
-            padding: EdgeInsets.symmetric(vertical: 5, horizontal: 10)),
+            )),
         Padding(
-            child: ElevatedButton(onPressed: () {}, child: Text("Adicionar")),
-            padding: EdgeInsets.symmetric(vertical: 5, horizontal: 10)),
+            padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
+            child: ElevatedButton(
+                onPressed: () {
+                  addTransaction(transactionDescription.text,
+                      double.parse(transactionValue.text));
+                },
+                child: const Text("Adicionar"))),
       ]),
     );
   }

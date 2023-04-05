@@ -1,21 +1,10 @@
 import 'package:flutter/material.dart';
-import './model/financial_transaction.dart';
 import 'package:intl/intl.dart';
+import './model/financial_transaction.dart';
 
-class FinancialTransactionsWidget extends StatefulWidget {
-  const FinancialTransactionsWidget({super.key});
-
-  @override
-  State<FinancialTransactionsWidget> createState() =>
-      _FinancialTransactionsWidgetState();
-}
-
-class _FinancialTransactionsWidgetState
-    extends State<FinancialTransactionsWidget> {
-  List<FinancialTransaction> transactions = [
-    FinancialTransaction("0", "Macbook Air M1", 6990.99, DateTime.now()),
-    FinancialTransaction("1", "Moto Yamaha MT04", 30000, DateTime.now()),
-  ];
+class FinancialTransactionsWidget extends StatelessWidget {
+  const FinancialTransactionsWidget(this.transactions, {super.key});
+  final List<FinancialTransaction> transactions;
 
   @override
   Widget build(BuildContext context) {
